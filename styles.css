@@ -1,0 +1,948 @@
+/* ============================================
+   HEAVEN FURNITURE MART - LUXURY LANDING PAGE
+   Production-Grade Frontend Engineering
+   ============================================ */
+
+/* ============================================
+   1. CSS VARIABLES & THEMING
+   ============================================ */
+:root {
+    /* Color Palette - Luxury Studio */
+    --color-dark-bg: #1a1a1a;
+    --color-charcoal: #2a2a2a;
+    --color-teal: #1e4d4f;
+    --color-ivory: #f5f1eb;
+    --color-gold: #b8956a;
+    --color-brown: #3d2817;
+    --color-wood-tan: #a0826d;
+    --color-text-primary: #2a2a2a;
+    --color-text-secondary: #666666;
+    --color-text-light: #f5f1eb;
+    --color-border: #e8e3db;
+    
+    /* Typography */
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 6rem;
+    --spacing-2xl: 8rem;
+    
+    /* Transitions */
+    --transition-fast: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Border Radius */
+    --radius-sm: 2px;
+    --radius-md: 4px;
+    --radius-lg: 8px;
+    
+    /* Shadows - Minimal & Luxury */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================
+   2. RESET & GLOBAL STYLES
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    color: var(--color-text-primary);
+    background-color: var(--color-ivory);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   3. NAVIGATION BAR
+   ============================================ */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--color-ivory);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--spacing-md) 0;
+    backdrop-filter: blur(10px);
+    background-color: rgba(245, 241, 235, 0.95);
+}
+
+.navbar-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-logo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.logo-text {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.logo-subtext {
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.navbar-links {
+    display: flex;
+    gap: var(--spacing-lg);
+    align-items: center;
+}
+
+.nav-link {
+    font-size: 0.95rem;
+    color: var(--color-text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    transition: color var(--transition-fast);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--color-gold);
+    transition: width var(--transition-fast);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.cta-link {
+    background: var(--color-charcoal);
+    color: var(--color-text-light);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-sm);
+}
+
+.cta-link::after {
+    display: none;
+}
+
+.cta-link:hover {
+    background: var(--color-teal);
+}
+
+/* ============================================
+   4. HERO SECTION - EDITORIAL LUXURY
+   ============================================ */
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+    align-items: center;
+    min-height: 100vh;
+    padding: var(--spacing-2xl);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-md);
+    letter-spacing: -1px;
+}
+
+.accent-text {
+    color: var(--color-gold);
+}
+
+.hero-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-lg);
+    max-width: 500px;
+    font-weight: 400;
+    line-height: 1.8;
+}
+
+.hero-image {
+    position: relative;
+    height: 600px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.hero-placeholder {
+    width: 100%;
+    height: 100%;
+    background: var(--color-charcoal);
+    position: relative;
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ============================================
+   5. BUTTONS - HIERARCHY
+   ============================================ */
+.btn {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    text-decoration: none;
+    display: inline-block;
+    letter-spacing: 0.3px;
+}
+
+.btn-primary {
+    background: var(--color-charcoal);
+    color: var(--color-text-light);
+}
+
+.btn-primary:hover {
+    background: var(--color-teal);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--color-charcoal);
+    border: 2px solid var(--color-charcoal);
+}
+
+.btn-secondary:hover {
+    background: var(--color-charcoal);
+    color: var(--color-text-light);
+}
+
+.btn-tertiary {
+    background: var(--color-ivory);
+    color: var(--color-charcoal);
+    border: 2px solid var(--color-charcoal);
+}
+
+.btn-tertiary:hover {
+    background: var(--color-charcoal);
+    color: var(--color-text-light);
+}
+
+/* ============================================
+   6. BRAND INTRO - EDITORIAL LAYOUT
+   ============================================ */
+.brand-intro {
+    background: var(--color-dark-bg);
+    color: var(--color-text-light);
+    padding: var(--spacing-2xl) var(--spacing-md);
+    margin: var(--spacing-2xl) 0;
+}
+
+.intro-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.intro-header {
+    margin-bottom: var(--spacing-xl);
+}
+
+.intro-label {
+    display: block;
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 700;
+}
+
+.intro-header h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.intro-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+    align-items: start;
+}
+
+.intro-text {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: rgba(245, 241, 235, 0.8);
+}
+
+.intro-quote {
+    background: rgba(184, 149, 106, 0.1);
+    border-left: 3px solid var(--color-gold);
+    padding: var(--spacing-lg);
+    position: relative;
+}
+
+.quote-mark {
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    color: var(--color-gold);
+    opacity: 0.3;
+    position: absolute;
+    top: -10px;
+    left: -5px;
+}
+
+.intro-quote p {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--color-text-light);
+}
+
+/* ============================================
+   7. TRUST SECTION - MINIMAL GRID
+   ============================================ */
+.trust-section {
+    padding: var(--spacing-2xl) var(--spacing-md);
+    max-width: 1400px;
+    margin: 0 auto;
+    background: var(--color-ivory);
+}
+
+.trust-header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+}
+
+.trust-label {
+    display: block;
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 700;
+}
+
+.trust-header h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+}
+
+.trust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.trust-card {
+    padding: var(--spacing-lg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-ivory);
+    transition: all var(--transition-normal);
+    text-align: center;
+}
+
+.trust-card:hover {
+    border-color: var(--color-gold);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+}
+
+.trust-icon {
+    font-size: 2rem;
+    color: var(--color-gold);
+    margin-bottom: var(--spacing-md);
+    font-weight: bold;
+}
+
+.trust-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-primary);
+}
+
+.trust-card p {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+}
+
+/* ============================================
+   8. COLLECTIONS - EDITORIAL GRID
+   ============================================ */
+.collections {
+    padding: var(--spacing-2xl) var(--spacing-md);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.collections-header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+}
+
+.collections-label {
+    display: block;
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 700;
+}
+
+.collections-header h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+}
+
+.collections-header p {
+    font-size: 1.05rem;
+    color: var(--color-text-secondary);
+}
+
+.collections-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.collection-card {
+    background: var(--color-ivory);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all var(--transition-normal);
+    cursor: pointer;
+}
+
+.collection-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+}
+
+.collection-image {
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    background: var(--color-charcoal);
+    position: relative;
+}
+
+.collection-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.collection-card:hover .collection-image img {
+    transform: scale(1.05);
+}
+
+.collection-info {
+    padding: var(--spacing-lg);
+}
+
+.collection-info h3 {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-primary);
+}
+
+.collection-info p {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-md);
+}
+
+.arrow-link {
+    color: var(--color-gold);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    transition: transform var(--transition-fast);
+}
+
+.arrow-link:hover {
+    transform: translateX(4px);
+}
+
+/* ============================================
+   9. BESPOKE SPOTLIGHT - HERO MOMENT
+   ============================================ */
+.bespoke-spotlight {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+    align-items: center;
+    padding: var(--spacing-2xl) var(--spacing-md);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.bespoke-content {
+    order: 2;
+}
+
+.bespoke-label {
+    display: block;
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 700;
+}
+
+.bespoke-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    line-height: 1.2;
+}
+
+.bespoke-description {
+    font-size: 1.05rem;
+    color: var(--color-text-secondary);
+    line-height: 1.9;
+    margin-bottom: var(--spacing-lg);
+    max-width: 500px;
+}
+
+.bespoke-features {
+    list-style: none;
+    margin-bottom: var(--spacing-lg);
+}
+
+.bespoke-features li {
+    font-size: 1rem;
+    color: var(--color-text-primary);
+    padding: var(--spacing-sm) 0;
+    padding-left: var(--spacing-lg);
+    position: relative;
+    font-weight: 500;
+}
+
+.bespoke-features li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-gold);
+    font-weight: bold;
+}
+
+.bespoke-image {
+    height: 600px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    order: 1;
+}
+
+.bespoke-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ============================================
+   10. SOCIAL PROOF SECTION
+   ============================================ */
+.social-proof {
+    background: var(--color-dark-bg);
+    color: var(--color-text-light);
+    padding: var(--spacing-2xl) var(--spacing-md);
+    margin: var(--spacing-2xl) 0;
+}
+
+.proof-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-2xl);
+    align-items: center;
+}
+
+.proof-quote {
+    padding-right: var(--spacing-xl);
+}
+
+.quote-text {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text-light);
+}
+
+.quote-author {
+    font-size: 1rem;
+    color: var(--color-gold);
+    font-weight: 600;
+}
+
+.quote-author span {
+    display: block;
+    font-size: 0.9rem;
+    color: rgba(245, 241, 235, 0.6);
+    margin-top: var(--spacing-xs);
+}
+
+.proof-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+}
+
+.stat {
+    text-align: center;
+    padding: var(--spacing-md);
+    border-left: 2px solid var(--color-gold);
+}
+
+.stat h3 {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-gold);
+    margin-bottom: var(--spacing-xs);
+}
+
+.stat p {
+    font-size: 0.95rem;
+    color: rgba(245, 241, 235, 0.7);
+}
+
+/* ============================================
+   11. FINAL CTA SECTION
+   ============================================ */
+.final-cta {
+    background: linear-gradient(135deg, var(--color-dark-bg) 0%, var(--color-charcoal) 100%);
+    color: var(--color-text-light);
+    padding: var(--spacing-2xl) var(--spacing-md);
+    text-align: center;
+}
+
+.cta-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.final-cta h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+}
+
+.final-cta p {
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-lg);
+    color: rgba(245, 241, 235, 0.8);
+}
+
+.cta-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ============================================
+   12. FOOTER
+   ============================================ */
+.footer {
+    background: var(--color-charcoal);
+    color: var(--color-text-light);
+    padding: var(--spacing-2xl) var(--spacing-md) var(--spacing-lg);
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.footer-section h4 {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-light);
+}
+
+.footer-section p {
+    font-size: 0.95rem;
+    color: rgba(245, 241, 235, 0.7);
+    line-height: 1.8;
+}
+
+.footer-section a {
+    color: var(--color-gold);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.footer-section a:hover {
+    color: var(--color-text-light);
+}
+
+.social-links {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(245, 241, 235, 0.1);
+    padding-top: var(--spacing-lg);
+    text-align: center;
+    font-size: 0.9rem;
+    color: rgba(245, 241, 235, 0.5);
+}
+
+/* ============================================
+   13. FLOATING ACTION BUTTON
+   ============================================ */
+.fab {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 999;
+}
+
+.fab-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--color-gold);
+    color: var(--color-dark-bg);
+    text-decoration: none;
+    font-size: 1.5rem;
+    box-shadow: var(--shadow-xl);
+    transition: all var(--transition-normal);
+}
+
+.fab-button:hover {
+    transform: scale(1.1);
+    background: var(--color-brown);
+    color: var(--color-gold);
+}
+
+/* ============================================
+   14. RESPONSIVE DESIGN - TABLET
+   ============================================ */
+@media (max-width: 768px) {
+    .hero {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        min-height: auto;
+        padding: var(--spacing-lg);
+    }
+
+    .hero-image {
+        height: 400px;
+        order: -1;
+    }
+
+    .intro-content {
+        grid-template-columns: 1fr;
+    }
+
+    .bespoke-spotlight {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .bespoke-image {
+        order: -1;
+        height: 400px;
+    }
+
+    .proof-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .proof-quote {
+        padding-right: 0;
+    }
+
+    .navbar-links {
+        gap: var(--spacing-md);
+        font-size: 0.9rem;
+    }
+
+    .collections-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+/* ============================================
+   15. RESPONSIVE DESIGN - MOBILE
+   ============================================ */
+@media (max-width: 480px) {
+    :root {
+        --spacing-lg: 2rem;
+        --spacing-xl: 3rem;
+        --spacing-2xl: 4rem;
+    }
+
+    .navbar {
+        padding: var(--spacing-sm) 0;
+    }
+
+    .navbar-container {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    .navbar-links {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero {
+        padding: var(--spacing-md);
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .hero-image {
+        height: 300px;
+    }
+
+    .trust-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .collections-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .collection-image {
+        height: 250px;
+    }
+
+    .proof-stats {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .fab {
+        bottom: 1rem;
+        right: 1rem;
+    }
+
+    .fab-button {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .intro-quote {
+        padding: var(--spacing-md);
+    }
+
+    .intro-quote p {
+        font-size: 1.25rem;
+    }
+}
+
+/* ============================================
+   16. PRINT STYLES
+   ============================================ */
+@media print {
+    .navbar,
+    .fab {
+        display: none;
+    }
+
+    body {
+        background: white;
+    }
+}
